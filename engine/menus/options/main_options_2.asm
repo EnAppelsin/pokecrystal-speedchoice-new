@@ -4,12 +4,15 @@ MainOptionsP2String::
 	db "BIKE MUSIC<LF>"
 	db "        :<LF>"
 	db "GIVE NICKNAMES<LF>"
+	db "        :<LF>"
+	db "FAST REPELS<LF>"
 	db "        :@"
 
 MainOptionsP2Pointers::
 	dw Options_ParkBallEffect
 	dw Options_BikeMusic
 	dw Options_Nicknames
+	dw Options_FastRepel
 	dw Options_OptionsPage
 MainOptionsP2PointersEnd::
 
@@ -37,3 +40,8 @@ Options_Nicknames:
 	db "YES@"
 .No
 	db "NO @"
+
+Options_FastRepel:
+	ld hl, FAST_REPEL_ADDRESS
+	lb bc, FAST_REPEL, 9
+	jp Options_OnOff
